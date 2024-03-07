@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/*===========================
+=           employers           =
+=============================*/
+
+Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::class);
+
+/*=====  End of employers   ======*/
+
+/*===========================
+=           candidates           =
+=============================*/
+
+Route::apiResource('/candidates', \App\Http\Controllers\API\CandidateController::class);
+
+/*=====  End of candidates   ======*/
