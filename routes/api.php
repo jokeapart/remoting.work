@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 /*===========================
 =           employers           =
 =============================*/
@@ -29,6 +30,7 @@ Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::c
 /*===========================
 =           candidates           =
 =============================*/
+Route::post('register', '\App\Http\Controllers\API\Candidate\Auth\RegistrationController@register');
 
 Route::apiResource('/candidates', \App\Http\Controllers\API\CandidateController::class);
 
