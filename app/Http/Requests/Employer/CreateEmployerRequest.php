@@ -10,7 +10,9 @@ class CreateEmployerRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer'],
-			'company_name' => ['required', 'string'],
+			'bpo_name' => ['required', 'string'],
+			'profile_image' => ['required', 'image'],
+			'office_image' => ['required', 'image'],
         ];
     }
 }

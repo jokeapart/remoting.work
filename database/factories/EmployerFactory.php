@@ -10,7 +10,9 @@ class EmployerFactory extends Factory
     {
         return [
             'user_id' => createOrRandomFactory(\App\Models\User::class),
-			'company_name' => $this->faker->firstName(),
+			'bpo_name' => $this->faker->firstName(),
+			'profile_image' => $this->faker->firstName(),
+			'office_image' => $this->faker->firstName(),
         ];
     }
 }

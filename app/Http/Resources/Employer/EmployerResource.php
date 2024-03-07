@@ -11,7 +11,9 @@ class EmployerResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-			'company_name' => $this->company_name,
+			'bpo_name' => $this->bpo_name,
+			'profile_image' => $this->profile_image,
+			'office_image' => $this->office_image,
             'created_at' => dateTimeFormat($this->created_at),
             'updated_at' => dateTimeFormat($this->updated_at),
         ];

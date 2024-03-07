@@ -33,3 +33,11 @@ Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::c
 Route::apiResource('/candidates', \App\Http\Controllers\API\CandidateController::class);
 
 /*=====  End of candidates   ======*/
+
+/*===========================
+=           employers           =
+=============================*/
+
+Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::class);
+
+/*=====  End of employers   ======*/
