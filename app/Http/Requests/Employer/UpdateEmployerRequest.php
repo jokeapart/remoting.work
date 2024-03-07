@@ -10,9 +10,7 @@ class UpdateEmployerRequest extends FormRequest
     {
         return [
             'user_id' => ['sometimes', 'integer'],
-			'bpo_name' => ['sometimes', 'string'],
-			'profile_image' => ['sometimes', 'image'],
-			'office_image' => ['sometimes', 'image'],
+			'company_name' => ['sometimes', 'string'],
         ];
     }
 }

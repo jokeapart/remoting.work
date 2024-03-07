@@ -41,3 +41,19 @@ Route::apiResource('/candidates', \App\Http\Controllers\API\CandidateController:
 Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::class);
 
 /*=====  End of employers   ======*/
+
+/*===========================
+=           bPOS           =
+=============================*/
+
+Route::apiResource('/bPOS', \App\Http\Controllers\API\BPOController::class);
+
+/*=====  End of bPOS   ======*/
+
+/*===========================
+=           employers           =
+=============================*/
+
+Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::class);
+
+/*=====  End of employers   ======*/
