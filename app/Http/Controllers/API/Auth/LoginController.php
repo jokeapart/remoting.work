@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -26,26 +28,19 @@ class LoginController extends Controller
         }
 
         $user = User::where('email', $request->input('email'))->first();
-        if (!$user && $request->input('role_id') === '1'){
+        if (!$user){
             return response()->json([
                'success' => 'false',
-               'message' => ' No Candidate found with this email address'
+               'message' => 'This user does not exist'
             ]);
-        }
-        elseif (!$user && $request->input('role_id') === '2')
+        }elseif (!Hash::check($request->input('password'), $user->password))
         {
             return response()->json([
-                'success' => 'false',
-                'message' => ' No Employer found with this email address'
+               'status' => false,
+               'message' => "Password didn't match"
             ]);
         }
-        elseif (!$user && $request->input('role_id') === '3')
-        {
-            return response()->json([
-                'success' => 'false',
-                'message' => ' No BPO found with this email address'
-            ]);
-        }
+
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
         {

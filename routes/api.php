@@ -33,6 +33,8 @@ Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::c
 Route::post('register', '\App\Http\Controllers\API\Candidate\Auth\RegistrationController@register');
 Route::post('login', '\App\Http\Controllers\API\Auth\LoginController@login');
 
+//Employers API routes
+Route::get('/employer/dashboard', '\App\Http\Controllers\API\Employers\HomeController@index');
 Route::apiResource('/candidates', \App\Http\Controllers\API\CandidateController::class);
 
 /*=====  End of candidates   ======*/
@@ -60,3 +62,11 @@ Route::apiResource('/bPOS', \App\Http\Controllers\API\BPOController::class);
 Route::apiResource('/employers', \App\Http\Controllers\API\EmployerController::class);
 
 /*=====  End of employers   ======*/
+
+/*===========================
+=           jobPostings           =
+=============================*/
+
+Route::apiResource('/jobPostings', \App\Http\Controllers\API\JobPostingController::class);
+
+/*=====  End of jobPostings   ======*/
