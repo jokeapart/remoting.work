@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Employers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    //Route::post('/auth/register', [AuthController::class, 'register'])->middleware('restrictRole:admin');
+    Route::get('/candidate/dashboard', [HomeController::class, 'index'])->middleware('restrictRole:candidate');
+
+
+    //Routes for Employer
+    Route::get('/employer/dashboard', [HomeController::class, 'index'])->middleware('restrictRole:employer');
 });
 
 
@@ -34,7 +40,7 @@ Route::post('register', '\App\Http\Controllers\API\Candidate\Auth\RegistrationCo
 Route::post('login', '\App\Http\Controllers\API\Auth\LoginController@login');
 
 //Employers API routes
-Route::get('/employer/dashboard', '\App\Http\Controllers\API\Employers\HomeController@index');
+//Route::get('/employer/dashboard', '\App\Http\Controllers\API\Employers\HomeController@index');
 Route::apiResource('/candidates', \App\Http\Controllers\API\CandidateController::class);
 
 /*=====  End of candidates   ======*/

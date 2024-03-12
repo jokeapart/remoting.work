@@ -11,6 +11,10 @@ class HomeController extends Controller
     public function index()
     {
         //return data for the Employers Dashboard
-        JobPosting::where('employer_id', auth()->guard('sanctum')->id())->paginate();
+        return response()->json([
+           'status' => true,
+           'data' => auth()->user()
+        ]);
+        //JobPosting::where('employer_id', auth()->guard('sanctum')->id())->paginate();
     }
 }

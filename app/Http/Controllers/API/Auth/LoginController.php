@@ -16,7 +16,6 @@ class LoginController extends Controller
     {
         //Check the role chosen, then choose the role accordingly
         $validator = Validator::make($request->all(), [
-           'role_id' => 'required',
            'email' => 'required',
            'password' => 'required',
         ]);
