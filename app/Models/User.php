@@ -4,13 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -43,8 +44,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function job_listings()
+    public function job_listings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(JobPosting::class, 'employee_id', 'user_id');
+        return $this->hasMany(JobListing::class, 'employer_id', 'id');
+    }
+
+    public function employer()
+    {
+        return $this->hasOne(Employer::class, 'user_id', 'id');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Employer\JobListingController;
 use App\Http\Controllers\API\Employers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,14 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
     //Routes for Employer
     Route::get('/employer/dashboard', [HomeController::class, 'index'])->middleware('restrictRole:employer');
+    Route::get('/employer/joblistings', [JobListingController::class, 'index'])->middleware('restrictRole:employer');
+    Route::post('/employer/joblistings/create', [JobListingController::class, 'create'])->middleware('restrictRole:employer');
+    Route::put('/employer/joblistings/update/{id}', [JobListingController::class, 'update'])->middleware('restrictRole:employer');
+    Route::delete('/employer/joblistings/destroy/{id}', [JobListingController::class, 'destroy'])->middleware('restrictRole:employer');
+
+    Route::get('/employer/profile', [HomeController::class, 'profile'])->middleware('restrictRole:employer');
+    Route::put('/employer/profile/update/{id}', [HomeController::class, 'profile_update'])->middleware('restrictRole:employer');
+
 });
 
 

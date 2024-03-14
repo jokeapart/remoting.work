@@ -12,7 +12,8 @@ class JobPosting extends Model
 {
     use HasFactory, Filterable;
 
-    protected string $default_filters = JobPostingFilters::class;
+    //protected string $default_filters = JobPostingFilters::class;
+    protected $table = 'jobPostings';
 
     /**
      * Mass-assignable attributes.
@@ -27,11 +28,6 @@ class JobPosting extends Model
 		'requirements',
 		'application_status',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'employer_id', 'id');
-    }
 
 
 }
