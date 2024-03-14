@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
     //Route::post('/auth/register', [AuthController::class, 'register'])->middleware('restrictRole:admin');
-    Route::get('/candidate/dashboard', [HomeController::class, 'index'])->middleware('restrictRole:candidate');
 
 
     //Routes for Employer
@@ -30,6 +29,10 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
     Route::get('/employer/profile', [HomeController::class, 'profile'])->middleware('restrictRole:employer');
     Route::put('/employer/profile/update/{id}', [HomeController::class, 'profile_update'])->middleware('restrictRole:employer');
+
+    //Routes for Customers
+    Route::get('/candidate/dashboard', [\App\Http\Controllers\Api\Candidate\HomeController::class, 'index'])->middleware('restrictRole:candidate');
+    Route::get('/candidate/profile', [\App\Http\Controllers\Api\Candidate\HomeController::class, 'profile'])->middleware('restrictRole:candidate');
 
 });
 
