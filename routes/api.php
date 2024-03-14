@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Candidate\JobApplicationController;
 use App\Http\Controllers\Api\Employer\JobListingController;
 use App\Http\Controllers\API\Employers\HomeController;
 use Illuminate\Http\Request;
@@ -33,6 +34,10 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //Routes for Customers
     Route::get('/candidate/dashboard', [\App\Http\Controllers\Api\Candidate\HomeController::class, 'index'])->middleware('restrictRole:candidate');
     Route::get('/candidate/profile', [\App\Http\Controllers\Api\Candidate\HomeController::class, 'profile'])->middleware('restrictRole:candidate');
+    Route::put('/candidate/profile/update/{id}', [\App\Http\Controllers\Api\Candidate\HomeController::class, 'profile_update'])->middleware('restrictRole:candidate');
+    Route::get('/candidate/jobs/applied', [JobApplicationController::class, 'index'])->middleware('restrictRole:candidate');
+    Route::post('/candidate/jobs/apply', [JobApplicationController::class, 'apply'])->middleware('restrictRole:candidate');
+
 
 });
 
