@@ -159,6 +159,25 @@ class RegistrationController extends Controller
         }
     }
 
+    public function registration_data()
+    {
+        try {
+           //Get all the BPO's and loop them for the registration page
+            $bpo = BPO::all();
+            return \response()->json([
+               'status' => true,
+               'message' => 'This is the BPOs data to be used on the Registration page for Candidates',
+                'data' => $bpo
+            ]);
+        }
+        catch (\Exception $e){
+            return response()->json([
+                'status' => false,
+                'data' => $e->getMessage()
+            ]);
+        }
+    }
+
 
 
 }

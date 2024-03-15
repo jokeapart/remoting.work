@@ -13,6 +13,7 @@ class BPO extends Model
     use HasFactory, Filterable;
 
     protected string $default_filters = BPOFilters::class;
+    protected $table = 'bPOS';
 
     /**
      * Mass-assignable attributes.

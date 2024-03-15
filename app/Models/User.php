@@ -58,4 +58,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Candidate::class, 'user_id', 'id');
     }
+
+    public function bpo_details()
+    {
+        return $this->hasOne(BPO::class, 'user_id', 'id');
+    }
+
+    public function bpo_candidates()
+    {
+        return $this->hasMany(Candidate::class, 'bpo_id', 'id');
+    }
 }

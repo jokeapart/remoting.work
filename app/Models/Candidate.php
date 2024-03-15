@@ -28,5 +28,9 @@ class Candidate extends Model
 		'resume',
     ];
 
+    public function candidate_details()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
 }

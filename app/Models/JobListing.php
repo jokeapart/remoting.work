@@ -11,4 +11,9 @@ class JobListing extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['employer_id', 'title', 'description', 'skills_required', 'requirements', 'status', 'location', 'type'];
+
+    public function employer()
+    {
+        return $this->belongsTo(User::class, 'employer_id', 'id');
+    }
 }
