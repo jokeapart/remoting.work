@@ -42,7 +42,7 @@ class RegistrationController extends Controller
                     ]);
                 }
 
-                //Create a new Candidate
+                //Create a new Candidates
                 $candidate = User::create([
                     'firstname' => $request->input('firstname'),
                     'lastname' => $request->input('lastname'),
