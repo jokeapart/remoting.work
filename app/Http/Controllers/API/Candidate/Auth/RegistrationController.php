@@ -53,14 +53,13 @@ class RegistrationController extends Controller
                     'status' => 'Pending Approval',
                 ]);
 
-                //Update the Candidate's Table
+                //Update the Candidate Table
                 Candidate::create([
                     'user_id' => $candidate->id,
                     'bpo_id' => $request->input('bpo_id'),
-                    //Fixed the three fields below
                     'verified_status' => $request->input('verified_status'),
                     'subscription_type' => $request->input('subscription_type'),
-                    'skill' => $request->input('skills'),
+                    'skill' => $request->input('skills'), 
                     'profile_image' => $request->input('profile_image'),
                     'resume' => $request->input('resume'),
                 ]);
