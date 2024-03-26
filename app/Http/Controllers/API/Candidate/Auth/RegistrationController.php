@@ -27,10 +27,12 @@ class RegistrationController extends Controller
                     'password' => 'required',
                     'phone_number' => 'required',
                     'role' => 'required',
+                    'skills' => 'required',
                     'subscription_type' => 'required',
                     'bpo_id' => 'required',
                     'profile_image' => 'required',
                     'resume' => 'required',
+                    
                 ]);
 
                 if ($validator->fails()) {
@@ -58,6 +60,7 @@ class RegistrationController extends Controller
                     //Fixed the three fields below
                     'verified_status' => $request->input('verified_status'),
                     'subscription_type' => $request->input('subscription_type'),
+                    'skill' => $request->input('skills'),
                     'profile_image' => $request->input('profile_image'),
                     'resume' => $request->input('resume'),
                 ]);
